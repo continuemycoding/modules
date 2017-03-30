@@ -1,6 +1,7 @@
 package com.qiang.framework.recommend;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.qiang.framework.helper.FileHelper;
 import com.qiang.framework.helper.PlayerPrefs;
 import com.qiang.framework.helper.Utils;
@@ -12,6 +13,8 @@ public class ProductManager
 {
     private static Product[] products;
 
+    private static Gson gson = new GsonBuilder().create();
+
     static
     {
         String json = PlayerPrefs.getString("product.json");
@@ -19,7 +22,7 @@ public class ProductManager
         {
             try
             {
-                products = new Gson().fromJson(json, Product[].class);
+                products = gson.fromJson(json, Product[].class);
             }
             catch (Exception e)
             {
@@ -30,10 +33,7 @@ public class ProductManager
         if(products == null)
         {
             json = FileHelper.readAssetFileToString("product.json");
-            products = new Gson().fromJson(json, Product[].class);
-
-            PlayerPrefs.setString("product.json", json);
-            PlayerPrefs.save();
+            products = gson.fromJson(json, Product[].class);
         }
 
         for(int i=0;i<products.length;i++)
@@ -60,5 +60,12 @@ public class ProductManager
         }
 
         return null;
+    }
+
+    public static void save()
+    {
+        String json = gson.toJson(products);
+        PlayerPrefs.setString("product.json", json);
+        PlayerPrefs.save();
     }
 }

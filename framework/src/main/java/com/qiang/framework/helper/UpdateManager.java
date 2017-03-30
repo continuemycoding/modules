@@ -17,9 +17,6 @@ public class UpdateManager
 {
 	public static void start(final Context context)
 	{
-		if(!SystemHelper.isWifiConnected(context))
-			return;
-
 //		DownloadItem downloadItem = new DownloadItem()
 //		{
 //			@Override
@@ -51,7 +48,7 @@ public class UpdateManager
 
 	public static void start(final Context context, final Product product, final int versionCode, final UpdateManagerListener updateManagerListener)
 	{
-		boolean selfUpdate = versionCode <= 0;
+		boolean selfUpdate = versionCode > 0;
 
 		if(product.versionCode > versionCode)
 		{
