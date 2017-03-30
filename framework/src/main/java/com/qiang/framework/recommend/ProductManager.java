@@ -31,6 +31,9 @@ public class ProductManager
         {
             json = FileHelper.readAssetFileToString("product.json");
             products = new Gson().fromJson(json, Product[].class);
+
+            PlayerPrefs.setString("product.json", json);
+            PlayerPrefs.save();
         }
 
         for(int i=0;i<products.length;i++)
