@@ -1,19 +1,14 @@
 package com.qiang.framework.dangbeiupdate;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.os.Build;
 
 import com.google.gson.Gson;
 import com.qiang.framework.download.DownloadFileFromURL;
 import com.qiang.framework.download.DownloadItem;
 import com.qiang.framework.helper.FileHelper;
-import com.qiang.framework.helper.PlayerPrefs;
-import com.qiang.framework.helper.UpdateManager;
+import com.qiang.framework.listener.UpdateManagerListener;
 import com.qiang.framework.recommend.Product;
 import com.qiang.framework.recommend.ProductManager;
-
-import org.apache.commons.lang3.RandomUtils;
 
 /**
  * Created by Administrator on 2017/3/31.
@@ -21,12 +16,17 @@ import org.apache.commons.lang3.RandomUtils;
 
 public class UpdatePlugin
 {
-    public static void start(final Context context)
+    public static void start(final Context context, final UpdateManagerListener updateManagerListener)
     {
         final Product product = ProductManager.getProduct(context.getPackageName());
         if (product == null)
             return;
 
+        start(context, product, updateManagerListener);
+    }
+
+    public static void start(final Context context, final Product product, final UpdateManagerListener updateManagerListener)
+    {
         DownloadItem downloadItem = new DownloadItem()
         {
             @Override
@@ -39,12 +39,15 @@ public class UpdatePlugin
                 product.versionName = newProduct.appver;
                 product.versionCode = newProduct.appcode;
                 product.releaseNote = newProduct.upinfo;
-                //product.piclist = newProduct.piclist;
-                //product.screenshotUrls = null;
+                product.piclist = newProduct.piclist;
+
+                if(product.piclist != null && !product.piclist.isEmpty())
+                    product.screenshotUrls = product.piclist.split(",");
 
                 ProductManager.save();
 
-                UpdateManager.start(context);
+                if(updateManagerListener != null)
+                    updateManagerListener.onUpdateAvailable(product);
             }
         };
 

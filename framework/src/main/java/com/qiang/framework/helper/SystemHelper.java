@@ -33,8 +33,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.qiang.framework.MyApplication;
-import com.qiang.framework.download.ApkDownloader;
-import com.umeng.analytics.MobclickAgent;
 import com.qiang.framework.download.DownloadFileFromURL;
 import com.qiang.framework.download.DownloadItem;
 import com.qiang.framework.listener.UpdateManagerListener;
@@ -42,7 +40,6 @@ import com.qiang.framework.recommend.Product;
 
 import org.apache.commons.lang3.RandomUtils;
 
-import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Random;
 
@@ -245,6 +242,9 @@ public class SystemHelper
 
     public static void showCustomQuitDialog(final Activity activity, final Product product)
     {
+        //UpdatePlugin.start(activity, product, null);
+        ReflectHelper.invokeMethod("com.qiang.framework.dangbeiupdate.UpdatePlugin", "start", new Object[]{activity, product, null}, Context.class, Product.class, UpdateManagerListener.class);
+
         final Dialog dialog = new AlertDialog.Builder(activity).create();
         dialog.show();
 
