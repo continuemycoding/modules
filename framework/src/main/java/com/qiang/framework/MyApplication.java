@@ -6,8 +6,6 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
-import com.qiang.framework.helper.MetaDataHelper;
-import com.qiang.framework.helper.ReflectHelper;
 import com.umeng.analytics.game.UMGameAgent;
 
 import java.security.MessageDigest;
@@ -52,12 +50,6 @@ public class MyApplication extends Application implements Application.ActivityLi
         UMGameAgent.setDebugMode(BuildConfig.DEBUG);
 
         registerActivityLifecycleCallbacks(this);
-
-        //AdSystem.getInstance(this).init(MetaDataHelper.getString("DANGBEIAD_APPID"), MetaDataHelper.getString("DANGBEIAD_APPKEY"));
-        ReflectHelper.invokeMethod("com.db.android.api.AdSystem", "init", new Object[]{MetaDataHelper.getString("DANGBEIAD_APPID"), MetaDataHelper.getString("DANGBEIAD_APPKEY")});
-
-        //AdSystem.setLogState(BuildConfig.DEBUG);
-        ReflectHelper.invokeMethod("com.db.android.api.AdSystem", "setLogState", new Object[]{BuildConfig.DEBUG});
     }
 
     public static String getMD5MessageDigest(byte[] bytes) {
