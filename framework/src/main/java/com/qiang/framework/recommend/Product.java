@@ -11,7 +11,7 @@ public class Product
     public String apptitle;//当贝
     public String packageName;
     public String packname;//当贝
-    public String dangbei_appId;
+    public int dangbei_appId;
     public String versionName;
     public String appver;//当贝
     public int versionCode;
