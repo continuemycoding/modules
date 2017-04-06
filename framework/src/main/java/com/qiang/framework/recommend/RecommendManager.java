@@ -3,6 +3,7 @@ package com.qiang.framework.recommend;
 import android.app.Activity;
 
 import com.qiang.framework.helper.SystemHelper;
+import com.qiang.framework.hook.LogHelper;
 
 public class RecommendManager
 {
@@ -18,6 +19,8 @@ public class RecommendManager
 		{
 			if(SystemHelper.isAppInstalled(activity, product.packageName))
 				continue;
+
+			LogHelper.info("推荐产品：" + product);
 
 			SystemHelper.showCustomQuitDialog(activity, product);
 

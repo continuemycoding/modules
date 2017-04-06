@@ -1,10 +1,15 @@
 package com.qiang.framework.recommend;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 /**
  * Created by Lin on 2016/7/2.
  */
 public class Product
 {
+    private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
     public String name;
     public String apptitle;//当贝
     public String packageName;
@@ -23,4 +28,11 @@ public class Product
 
     public boolean multiplayer;
     public String app_type;
+    public int dislike;
+
+    @Override
+    public String toString()
+    {
+        return gson.toJson(this);
+    }
 }

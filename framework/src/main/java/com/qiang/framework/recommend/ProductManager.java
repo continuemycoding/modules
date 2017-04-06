@@ -62,6 +62,9 @@ public class ProductManager
         Arrays.sort(products, new Comparator<Product>() {
             @Override
             public int compare(Product product1, Product product2) {
+                if(Math.abs(product1.dislike - product2.dislike) >= 3)
+                    return product1.dislike - product2.dislike;
+
                 if(product != null)
                 {
                     if(product1.multiplayer != product2.multiplayer)
@@ -106,6 +109,5 @@ public class ProductManager
     {
         String json = gson.toJson(products);
         PlayerPrefs.setString("product.json", json);
-        PlayerPrefs.save();
     }
 }

@@ -35,6 +35,7 @@ import android.widget.Toast;
 import com.qiang.framework.MyApplication;
 import com.qiang.framework.download.DownloadFileFromURL;
 import com.qiang.framework.download.DownloadItem;
+import com.qiang.framework.hook.LogHelper;
 import com.qiang.framework.listener.UpdateManagerListener;
 import com.qiang.framework.recommend.Product;
 
@@ -286,7 +287,7 @@ public class SystemHelper
             @Override
             public void onCancel(DialogInterface dialog)
             {
-
+                product.dislike++;
             }
         });
 
@@ -324,15 +325,15 @@ public class SystemHelper
             @Override
             public void onClick(View v)
             {
-                dialog.dismiss();
+                product.dislike = 0;
 
-                //UpdateManager.start(activity, product, 0);
+                dialog.dismiss();
 
                 if(!isAppInstalled(activity, "com.dangbeimarket"))
                 {
-                    showText(activity, "请先安装当贝电视应用市场");
+                    LogHelper.info("未安装当贝电视应用市场");
 
-                    downloadDangbeiMarket(activity);
+                    UpdateManager.start(activity, product, 0);
                 }
                 else
                 {
@@ -361,6 +362,8 @@ public class SystemHelper
             @Override
             public void onClick(View v)
             {
+                product.dislike++;
+
                 dialog.dismiss();
                 activity.finish();
             }
@@ -371,6 +374,8 @@ public class SystemHelper
             @Override
             public void onClick(View v)
             {
+                product.dislike++;
+
                 dialog.dismiss();
             }
         });
