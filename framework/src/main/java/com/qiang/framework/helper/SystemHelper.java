@@ -325,7 +325,7 @@ public class SystemHelper
             @Override
             public void onClick(View v)
             {
-                product.dislike = 0;
+                product.dislike -= 3;
 
                 dialog.dismiss();
 
