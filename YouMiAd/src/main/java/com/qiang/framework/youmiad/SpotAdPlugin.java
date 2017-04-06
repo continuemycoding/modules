@@ -83,11 +83,11 @@ public class SpotAdPlugin
 		return SpotManager.getInstance(context).isSpotShowing();
 	}
 
-	protected void hide(Context context) {
+	public static void hide(Context context) {
 		SpotManager.getInstance(context).hideSpot();
 	}
 
-	protected void destroy(Context context) {
+	public static void destroy(Context context) {
 		SpotManager.getInstance(context).onDestroy();
 	}
 }
