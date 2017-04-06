@@ -50,10 +50,10 @@ public class UpdateManager
 
 	public static void start(final Context context, final Product product, final int versionCode, final UpdateManagerListener updateManagerListener)
 	{
-		if(new Date().getTime() - SystemHelper.getLastUpdateTime() < 24 * 60 * 60 * 1000)//安装24小时后再检查更新
-			return;
-
 		boolean selfUpdate = versionCode > 0;
+
+		if(selfUpdate && new Date().getTime() - SystemHelper.getLastUpdateTime() < 24 * 60 * 60 * 1000)//安装24小时后再检查更新
+			return;
 
 		if(product.versionCode > versionCode)
 		{
