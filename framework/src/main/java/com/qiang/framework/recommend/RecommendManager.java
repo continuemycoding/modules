@@ -16,7 +16,7 @@ public class RecommendManager
 
 		for (Product product : ProductManager.getProducts())
 		{
-			if(!product.recommend || SystemHelper.isAppInstalled(activity, product.packageName))
+			if(SystemHelper.isAppInstalled(activity, product.packageName))
 				continue;
 
 			SystemHelper.showCustomQuitDialog(activity, product);

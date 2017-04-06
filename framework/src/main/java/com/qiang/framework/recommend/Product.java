@@ -5,8 +5,6 @@ package com.qiang.framework.recommend;
  */
 public class Product
 {
-    public boolean recommend;
-
     public String name;
     public String apptitle;//当贝
     public String packageName;
@@ -22,4 +20,7 @@ public class Product
     public String upinfo;//当贝
     public String[] screenshotUrls;
     public String piclist;//当贝
+
+    public boolean multiplayer;
+    public String app_type;
 }
