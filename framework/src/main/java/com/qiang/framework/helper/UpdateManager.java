@@ -13,6 +13,8 @@ import com.qiang.framework.recommend.Product;
 import com.qiang.framework.recommend.ProductManager;
 import com.umeng.analytics.MobclickAgent;
 
+import java.util.Date;
+
 public class UpdateManager
 {
 	public static void start(final Context context)
@@ -38,7 +40,7 @@ public class UpdateManager
 		if (product == null)
 			return;
 
-		start(context, product, SystemHelper.getVersionCode(context));
+		start(context, product, SystemHelper.getVersionCode());
 	}
 
 	public static void start(final Context context, final Product product, final int versionCode)
@@ -48,6 +50,9 @@ public class UpdateManager
 
 	public static void start(final Context context, final Product product, final int versionCode, final UpdateManagerListener updateManagerListener)
 	{
+		if(new Date().getTime() - SystemHelper.getLastUpdateTime() < 24 * 60 * 60 * 1000)//安装24小时后再检查更新
+			return;
+
 		boolean selfUpdate = versionCode > 0;
 
 		if(product.versionCode > versionCode)
@@ -92,7 +97,7 @@ public class UpdateManager
 			AlertDialog.Builder builder = new AlertDialog.Builder(context);
 			if(selfUpdate)
 			{
-				builder.setTitle("升级版本 " + SystemHelper.getVersionName(context) + " -> " + product.versionName);
+				builder.setTitle("升级版本 " + SystemHelper.getVersionName() + " -> " + product.versionName);
 				builder.setMessage(product.releaseNote);
 			}
 			else

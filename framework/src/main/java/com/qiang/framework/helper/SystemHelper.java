@@ -164,49 +164,78 @@ public class SystemHelper
         launchApp(context, context.getPackageName());
     }
 
-    public static String getPackageName(Context context)
+    public static String getPackageName()
     {
-        return context.getPackageName();
+        return application.getPackageName();
     }
 
-    public static String getVersionName(Context context)
-    {
-        return getVersionName(context, context.getPackageName());
-    }
-
-    public static String getVersionName(Context context, String packageName)
+    public static PackageInfo getPackageInfo(String packageName)
     {
         try
         {
-            PackageManager packageManager = context.getPackageManager();
-            PackageInfo packageInfo = packageManager.getPackageInfo(packageName, 0);
-            return packageInfo.versionName;
+            PackageManager packageManager = application.getPackageManager();
+            return packageManager.getPackageInfo(packageName, 0);
         }
         catch (PackageManager.NameNotFoundException e)
         {
             e.printStackTrace();
         }
+
+        return null;
+    }
+
+    public static String getVersionName()
+    {
+        return getVersionName(getPackageName());
+    }
+
+    public static String getVersionName(String packageName)
+    {
+        PackageInfo packageInfo = getPackageInfo(packageName);
+        if(packageInfo != null)
+            return packageInfo.versionName;
 
         return "";
     }
 
-    public static int getVersionCode(Context context)
+    public static int getVersionCode()
     {
-        return getVersionCode(context, context.getPackageName());
+        return getVersionCode(getPackageName());
     }
 
-    public static int getVersionCode(Context context, String packageName)
+    public static int getVersionCode(String packageName)
     {
-        try
-        {
-            PackageManager packageManager = context.getPackageManager();
-            PackageInfo packageInfo = packageManager.getPackageInfo(packageName, 0);
+        PackageInfo packageInfo = getPackageInfo(packageName);
+        if(packageInfo != null)
             return packageInfo.versionCode;
-        }
-        catch (PackageManager.NameNotFoundException e)
-        {
-            e.printStackTrace();
-        }
+
+        return 0;
+    }
+
+    public static long getFirstInstallTime()
+    {
+        return getFirstInstallTime(getPackageName());
+    }
+
+    public static long getFirstInstallTime(String packageName)
+    {
+        PackageInfo packageInfo = getPackageInfo(packageName);
+        if(packageInfo != null)
+            return packageInfo.firstInstallTime;
+
+        return 0;
+    }
+
+    public static long getLastUpdateTime()
+    {
+        return getLastUpdateTime(getPackageName());
+    }
+
+    public static long getLastUpdateTime(String packageName)
+    {
+        PackageInfo packageInfo = getPackageInfo(packageName);
+        if(packageInfo != null)
+            return packageInfo.lastUpdateTime;
 
         return 0;
     }
