@@ -3,6 +3,8 @@ package com.qiang.framework.helper;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.qiang.framework.hook.LogHelper;
+
 /**
  * Created by Lin on 2016/7/10.
  */
@@ -86,6 +88,7 @@ public class PlayerPrefs
     public static void save()
     {
         editor.apply();
+        LogHelper.info("保存数据");
     }
 
     public static void setFloat(String key, float value)
@@ -103,7 +106,7 @@ public class PlayerPrefs
         editor.putInt(key, value);
     }
 
-    public static void setLong(String key, int value)
+    public static void setLong(String key, long value)
     {
         editor.putLong(key, value);
     }

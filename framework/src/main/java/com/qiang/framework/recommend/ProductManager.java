@@ -6,6 +6,7 @@ import com.qiang.framework.helper.FileHelper;
 import com.qiang.framework.helper.PlayerPrefs;
 import com.qiang.framework.helper.SystemHelper;
 import com.qiang.framework.helper.Utils;
+import com.qiang.framework.hook.LogHelper;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -22,8 +23,10 @@ public class ProductManager
     static
     {
         String json = PlayerPrefs.getString("product.json");
-        if(!json.equals(""))
+        if(!json.equals("") && PlayerPrefs.getLong("lastUpdateTime") == SystemHelper.getLastUpdateTime())
         {
+            LogHelper.info("读取持久化产品数据");
+
             try
             {
                 products = gson.fromJson(json, Product[].class);
@@ -36,6 +39,10 @@ public class ProductManager
 
         if(products == null)
         {
+            LogHelper.info("读取内置产品数据");
+
+            PlayerPrefs.setLong("lastUpdateTime", SystemHelper.getLastUpdateTime());
+
             json = FileHelper.readAssetFileToString("product.json");
             products = gson.fromJson(json, Product[].class);
         }

@@ -6,6 +6,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
+import com.qiang.framework.helper.PlayerPrefs;
 import com.umeng.analytics.game.UMGameAgent;
 
 import java.security.MessageDigest;
@@ -92,6 +93,7 @@ public class MyApplication extends Application implements Application.ActivityLi
     @Override
     public void onActivityPaused(Activity activity) {
         UMGameAgent.onPause(activity);
+        PlayerPrefs.save();
     }
 
     @Override
