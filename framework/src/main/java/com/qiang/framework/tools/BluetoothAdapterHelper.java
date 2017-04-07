@@ -1,4 +1,4 @@
-package com.qiang.framework.hook;
+package com.qiang.framework.tools;
 
 import android.bluetooth.BluetoothAdapter;
 

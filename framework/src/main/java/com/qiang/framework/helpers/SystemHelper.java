@@ -1,4 +1,4 @@
-package com.qiang.framework.helper;
+package com.qiang.framework.helpers;
 
 /**
  * Created by Administrator on 2017/2/25.
@@ -35,7 +35,6 @@ import android.widget.Toast;
 import com.qiang.framework.MyApplication;
 import com.qiang.framework.download.DownloadFileFromURL;
 import com.qiang.framework.download.DownloadItem;
-import com.qiang.framework.hook.LogHelper;
 import com.qiang.framework.listener.UpdateManagerListener;
 import com.qiang.framework.recommend.Product;
 

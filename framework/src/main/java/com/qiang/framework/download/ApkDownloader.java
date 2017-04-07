@@ -11,8 +11,8 @@ import android.os.Environment;
 import android.widget.Toast;
 
 import com.umeng.analytics.MobclickAgent;
-import com.qiang.framework.hook.LogHelper;
-import com.qiang.framework.helper.SystemHelper;
+import com.qiang.framework.helpers.LogHelper;
+import com.qiang.framework.helpers.SystemHelper;
 import com.qiang.framework.recommend.Product;
 
 import java.util.HashMap;

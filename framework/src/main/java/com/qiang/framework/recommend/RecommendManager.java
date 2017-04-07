@@ -2,8 +2,8 @@ package com.qiang.framework.recommend;
 
 import android.app.Activity;
 
-import com.qiang.framework.helper.SystemHelper;
-import com.qiang.framework.hook.LogHelper;
+import com.qiang.framework.helpers.SystemHelper;
+import com.qiang.framework.helpers.LogHelper;
 
 public class RecommendManager
 {

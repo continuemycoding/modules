@@ -6,9 +6,9 @@ import android.content.Intent;
 import android.os.Environment;
 import android.widget.Toast;
 
-import com.qiang.framework.hook.LogHelper;
+import com.qiang.framework.helpers.LogHelper;
 import com.umeng.analytics.MobclickAgent;
-import com.qiang.framework.helper.FileHelper;
+import com.qiang.framework.helpers.FileHelper;
 import com.qiang.framework.recommend.Product;
 import com.qiang.framework.recommend.ProductManager;
 

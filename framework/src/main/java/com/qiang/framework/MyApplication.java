@@ -6,7 +6,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 
-import com.qiang.framework.helper.PlayerPrefs;
+import com.qiang.framework.helpers.PlayerPrefs;
 import com.umeng.analytics.game.UMGameAgent;
 
 import java.security.MessageDigest;

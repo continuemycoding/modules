@@ -5,7 +5,7 @@ import android.content.Context;
 import com.google.gson.Gson;
 import com.qiang.framework.download.DownloadFileFromURL;
 import com.qiang.framework.download.DownloadItem;
-import com.qiang.framework.helper.FileHelper;
+import com.qiang.framework.helpers.FileHelper;
 import com.qiang.framework.listener.UpdateManagerListener;
 import com.qiang.framework.recommend.Product;
 import com.qiang.framework.recommend.ProductManager;

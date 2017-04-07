@@ -1,4 +1,4 @@
-package com.qiang.framework.helper;
+package com.qiang.framework.helpers;
 
 import android.content.Context;
 import android.content.res.AssetManager;

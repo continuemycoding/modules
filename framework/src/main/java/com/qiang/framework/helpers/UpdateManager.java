@@ -1,4 +1,4 @@
-package com.qiang.framework.helper;
+package com.qiang.framework.helpers;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -7,7 +7,6 @@ import android.os.Environment;
 import android.widget.Toast;
 
 import com.qiang.framework.download.ApkDownloader;
-import com.qiang.framework.hook.LogHelper;
 import com.qiang.framework.listener.UpdateManagerListener;
 import com.qiang.framework.recommend.Product;
 import com.qiang.framework.recommend.ProductManager;

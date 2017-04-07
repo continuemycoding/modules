@@ -4,7 +4,7 @@ import android.os.AsyncTask;
 import android.os.Environment;
 
 import com.qiang.framework.MyApplication;
-import com.qiang.framework.helper.FileHelper;
+import com.qiang.framework.helpers.FileHelper;
 
 import java.io.BufferedInputStream;
 import java.io.FileOutputStream;

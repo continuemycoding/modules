@@ -1,9 +1,7 @@
-package com.qiang.framework.helper;
+package com.qiang.framework.helpers;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
-import com.qiang.framework.hook.LogHelper;
 
 /**
  * Created by Lin on 2016/7/10.
