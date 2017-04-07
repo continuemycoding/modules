@@ -50,8 +50,8 @@ public class ProductManager
         for(int i=0;i<products.length;i++)
         {
             Product product = products[i];
-            if(product.piclist != null && !product.piclist.isEmpty())
-                product.screenshotUrls = product.piclist.split(",");
+            if(product.app_scanimg != null && !product.app_scanimg.isEmpty())
+                product.screenshotUrls = product.app_scanimg.split(",");
         }
     }
 

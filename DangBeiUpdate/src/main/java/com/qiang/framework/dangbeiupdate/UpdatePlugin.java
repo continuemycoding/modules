@@ -35,14 +35,14 @@ public class UpdatePlugin
                 String json = FileHelper.readFileToString(path);
                 Product newProduct = new Gson().fromJson(json, Product.class);
 
-                product.url = newProduct.downurl;
-                product.versionName = newProduct.appver;
-                product.versionCode = newProduct.appcode;
-                product.releaseNote = newProduct.upinfo;
-                product.piclist = newProduct.piclist;
+                product.url = newProduct.download_url;
+                product.versionName = newProduct.app_version;
+                product.versionCode = newProduct.app_code;
+                product.releaseNote = newProduct.app_updateinfo;
+                product.app_scanimg = newProduct.app_scanimg;
 
-                if(product.piclist != null && !product.piclist.isEmpty())
-                    product.screenshotUrls = product.piclist.split(",");
+                if(product.app_scanimg != null && !product.app_scanimg.isEmpty())
+                    product.screenshotUrls = product.app_scanimg.split(",");
 
                 ProductManager.save();
 
@@ -51,7 +51,7 @@ public class UpdatePlugin
             }
         };
 
-        downloadItem.url = "http://api.dangbei.net/dbapinew/view.php?id=" + product.dangbei_appId;
+        downloadItem.url = "http://api.dangbei.net/dbapinew/view_app.php?id=" + product.dangbei_appId;
 
         new DownloadFileFromURL().execute(new DownloadItem[]{downloadItem});
     }
