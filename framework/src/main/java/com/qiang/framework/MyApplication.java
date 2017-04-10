@@ -87,12 +87,16 @@ public class MyApplication extends Application implements Application.ActivityLi
     @Override
     public void onActivityResumed(Activity activity) {
         currentActivity = activity;
+
         UMGameAgent.onResume(activity);
+        UMGameAgent.onPageStart(activity.getLocalClassName());
     }
 
     @Override
     public void onActivityPaused(Activity activity) {
         UMGameAgent.onPause(activity);
+        UMGameAgent.onPageEnd(activity.getLocalClassName());
+
         PlayerPrefs.save();
     }
 
