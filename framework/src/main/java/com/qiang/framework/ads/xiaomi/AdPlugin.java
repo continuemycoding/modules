@@ -10,6 +10,17 @@ import com.qiang.framework.helpers.ReflectHelper;
 
 public class AdPlugin {
 
+    public static boolean hasAdModule()
+    {
+        try {
+            Class.forName("com.xiaomi.ad.AdSdk");
+        } catch (ClassNotFoundException e) {
+            return false;
+        }
+
+        return true;
+    }
+
     public static void setDebugOn()
     {
         ReflectHelper.invokeMethod("com.xiaomi.ad.AdSdk", "setDebugOn");
