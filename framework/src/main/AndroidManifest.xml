@@ -1,5 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
     package="com.qiang.framework">
+
+    <receiver android:name="com.qiang.framework.receiver.AppInstallReceiver">
+        <intent-filter>
+            <action android:name="android.intent.action.PACKAGE_ADDED" />
+            <data android:scheme="package" />
+        </intent-filter>
+    </receiver>
 
 </manifest>
