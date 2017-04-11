@@ -9,20 +9,30 @@ import java.lang.reflect.Method;
 
 public class ReflectHelper {
 
+    public static void invokeMethod(String className, String methodName)
+    {
+        invokeMethod(className, methodName, null, Class.class);
+    }
+
     public static void invokeMethod(String className, String methodName, Object[] objects, Class... parameterTypes)
     {
-        Class[] types = new Class[objects.length];
+        Class[] types = null;
 
-        if(parameterTypes != null)
+        if(objects != null)
         {
-            for(int i=0;i<parameterTypes.length;i++)
-                types[i] = parameterTypes[i];
-        }
+            types = new Class[objects.length];
 
-        for(int i=0;i<types.length;i++)
-        {
-            if(types[i] == null)
-                types[i] = objects[i].getClass();
+            if(parameterTypes != null)
+            {
+                for(int i=0;i<parameterTypes.length;i++)
+                    types[i] = parameterTypes[i];
+            }
+
+            for(int i=0;i<types.length;i++)
+            {
+                if(types[i] == null)
+                    types[i] = objects[i].getClass();
+            }
         }
 
         try {
