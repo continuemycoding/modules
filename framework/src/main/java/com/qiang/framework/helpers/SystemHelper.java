@@ -272,7 +272,7 @@ public class SystemHelper
     public static void showCustomQuitDialog(final Activity activity, final Product product)
     {
         //UpdatePlugin.start(activity, product, null);
-        ReflectHelper.invokeMethod("com.qiang.framework.dangbeiupdate.UpdatePlugin", "start", new Object[]{activity, product, null}, Context.class, Product.class, UpdateManagerListener.class);
+        ReflectHelper.invokeStaticMethod("com.qiang.framework.dangbeiupdate.UpdatePlugin", "start", new Object[]{activity, product, null}, Context.class, Product.class, UpdateManagerListener.class);
 
         final Dialog dialog = new AlertDialog.Builder(activity).create();
         dialog.show();

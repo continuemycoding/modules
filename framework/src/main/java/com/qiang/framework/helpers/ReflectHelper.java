@@ -9,12 +9,22 @@ import java.lang.reflect.Method;
 
 public class ReflectHelper {
 
-    public static void invokeMethod(String className, String methodName)
+    public static Object invokeStaticMethod(String className, String methodName)
     {
-        invokeMethod(className, methodName, null, Class.class);
+        return invokeStaticMethod(className, methodName, null, Class.class);
     }
 
-    public static void invokeMethod(String className, String methodName, Object[] objects, Class... parameterTypes)
+    public static Object invokeStaticMethod(String className, String methodName, Object[] objects, Class... parameterTypes)
+    {
+        return invokeMethod(className, methodName, null, null, Class.class);
+    }
+
+    public static Object invokeMethod(String className, String methodName, Object receiver)
+    {
+        return invokeMethod(className, methodName, receiver, null, Class.class);
+    }
+
+    public static Object invokeMethod(String className, String methodName, Object receiver, Object[] objects, Class... parameterTypes)
     {
         Class[] types = null;
 
@@ -39,7 +49,7 @@ public class ReflectHelper {
             Class ownerClass = Class.forName(className);
 
             Method method = ownerClass.getMethod(methodName, types);
-            method.invoke(null, objects);
+            return method.invoke(receiver, objects);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (NoSuchMethodException e) {
@@ -51,5 +61,7 @@ public class ReflectHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return null;
     }
 }

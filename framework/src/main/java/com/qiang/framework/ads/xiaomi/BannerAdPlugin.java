@@ -12,16 +12,16 @@ import com.qiang.framework.helpers.ReflectHelper;
 public class BannerAdPlugin
 {
     public static void requestAd(Context context, ViewGroup container, String id) {
-        ReflectHelper.invokeMethod("com.qiang.framework.xiaomiad.BannerAdPlugin", "requestAd", new Object[]{context, container, id}, Context.class, ViewGroup.class, String.class);
+        ReflectHelper.invokeStaticMethod("com.qiang.framework.xiaomiad.BannerAdPlugin", "requestAd", new Object[]{context, container, id}, Context.class, ViewGroup.class, String.class);
     }
 
     public static void show()
     {
-        ReflectHelper.invokeMethod("com.qiang.framework.xiaomiad.BannerAdPlugin", "show");
+        ReflectHelper.invokeStaticMethod("com.qiang.framework.xiaomiad.BannerAdPlugin", "show");
     }
 
     public static void hide()
     {
-        ReflectHelper.invokeMethod("com.qiang.framework.xiaomiad.BannerAdPlugin", "hide");
+        ReflectHelper.invokeStaticMethod("com.qiang.framework.xiaomiad.BannerAdPlugin", "hide");
     }
 }

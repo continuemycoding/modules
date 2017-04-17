@@ -23,16 +23,16 @@ public class AdPlugin {
 
     public static void setDebugOn()
     {
-        ReflectHelper.invokeMethod("com.xiaomi.ad.AdSdk", "setDebugOn");
+        ReflectHelper.invokeStaticMethod("com.xiaomi.ad.AdSdk", "setDebugOn");
     }
 
     public static void setMockOn()
     {
-        ReflectHelper.invokeMethod("com.xiaomi.ad.AdSdk", "setMockOn");
+        ReflectHelper.invokeStaticMethod("com.xiaomi.ad.AdSdk", "setMockOn");
     }
 
     public static void initialize(Context context, String id)
     {
-        ReflectHelper.invokeMethod("com.xiaomi.ad.AdSdk", "initialize", new Object[]{context, id}, Context.class, String.class);
+        ReflectHelper.invokeStaticMethod("com.xiaomi.ad.AdSdk", "initialize", new Object[]{context, id}, Context.class, String.class);
     }
 }
