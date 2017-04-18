@@ -17,6 +17,9 @@ public class RecommendManager
 
 		for (Product product : ProductManager.getProducts())
 		{
+			if(product.dangbei_appId == 0)
+				continue;
+
 			if(SystemHelper.isAppInstalled(activity, product.packageName))
 				continue;
 

@@ -27,6 +27,14 @@ public class UpdatePlugin
 
     public static void start(final Context context, final Product product, final UpdateManagerListener updateManagerListener)
     {
+        if(product.dangbei_appId == 0)
+        {
+            if(updateManagerListener != null)
+                updateManagerListener.onNoUpdateAvailable();
+
+            return;
+        }
+
         DownloadItem downloadItem = new DownloadItem()
         {
             @Override
