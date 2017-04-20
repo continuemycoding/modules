@@ -338,20 +338,31 @@ public class SystemHelper
                 {
                     try {
                         Intent intent = new Intent(Intent.ACTION_MAIN);
-                        //intent.addCategory(Intent.CATEGORY_LAUNCHER);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         intent.putExtra("detail_url", "http://api.dangbei.net/dbapinew/view.php?id=" + product.dangbei_appId);
                         ComponentName cn = new ComponentName("com.dangbeimarket", "com.dangbeimarket.activity.NewDetailActivity");
                         intent.setComponent(cn);
-                        activity.startActivity(intent);
+                        activity.startActivityForResult(intent, 0);
+                        return;
                     }
                     catch (Exception e)
                     {
                         e.printStackTrace();
-
-                        UpdateManager.start(activity, product, 0);
                     }
+
+                    try {
+                        Intent intent = new Intent(Intent.ACTION_MAIN);
+                        intent.putExtra("detail_url", "http://api.dangbei.net/dbapinew/view.php?id=" + product.dangbei_appId);
+                        ComponentName cn = new ComponentName("com.dangbeimarket", "com.dangbeimarket.widget.tvRecyclerview.mixSample.MixDetailActivity");
+                        intent.setComponent(cn);
+                        activity.startActivityForResult(intent, 0);
+                        return;
+                    }
+                    catch (Exception e)
+                    {
+                        e.printStackTrace();
+                    }
+
+                    UpdateManager.start(activity, product, 0);
                 }
             }
         });
