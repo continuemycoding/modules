@@ -286,7 +286,7 @@ public class SystemHelper
             @Override
             public void onCancel(DialogInterface dialog)
             {
-                product.dislike++;
+                product.recommend--;
             }
         });
 
@@ -324,7 +324,7 @@ public class SystemHelper
             @Override
             public void onClick(View v)
             {
-                product.dislike -= 3;
+                product.recommend += 3;
 
                 dialog.dismiss();
 
@@ -372,7 +372,7 @@ public class SystemHelper
             @Override
             public void onClick(View v)
             {
-                product.dislike++;
+                product.recommend--;
 
                 dialog.dismiss();
                 activity.finish();
@@ -384,7 +384,7 @@ public class SystemHelper
             @Override
             public void onClick(View v)
             {
-                product.dislike++;
+                product.recommend--;
 
                 dialog.dismiss();
             }

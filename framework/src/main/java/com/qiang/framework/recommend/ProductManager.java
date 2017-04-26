@@ -61,8 +61,8 @@ public class ProductManager
         Arrays.sort(products, new Comparator<Product>() {
             @Override
             public int compare(Product product1, Product product2) {
-                if(Math.abs(product1.dislike - product2.dislike) >= 3)
-                    return product1.dislike - product2.dislike;
+                if(Math.abs(product1.recommend - product2.recommend) >= 3)
+                    return product2.recommend - product1.recommend;
 
                 if(product != null)
                 {
