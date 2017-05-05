@@ -3,10 +3,12 @@ package com.qiang.framework.recommend;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.Serializable;
+
 /**
  * Created by Lin on 2016/7/2.
  */
-public class Product
+public class Product implements Serializable
 {
     private static Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
